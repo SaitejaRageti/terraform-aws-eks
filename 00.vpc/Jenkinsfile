@@ -5,7 +5,7 @@ pipeline {
     environment { 
         appVersion = ''
         REGION = "us-east-1"
-        ACC_ID = "315069654700"
+        ACC_ID = "253490767945"
         PROJECT = "roboshop"
     }
     options {
@@ -27,7 +27,7 @@ pipeline {
                 script {
                     withAWS(credentials: 'aws-creds', region: 'us-east-1') {
                         sh """
-                            cd 00-vpc
+                            cd 00.vpc
                             terraform init -reconfigure
                         """
                     }
@@ -57,7 +57,7 @@ pipeline {
                 script {
                     withAWS(credentials: 'aws-creds', region: 'us-east-1') {
                         sh """
-                            cd 00-vpc
+                            cd 00.vpc
                             terraform apply -auto-approve
                         """
                     }
